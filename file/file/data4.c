@@ -36,18 +36,18 @@ int isFull(struct Stack* stack) {
 // ÈëÕ»
 void push(struct Stack* stack, int item) {
     if (isFull(stack)) {
-        printf("Stack is full\n");
+        printf("Õ»Âú\n");
         return;
     }
     stack->top++;
     stack->array[stack->top] = item;
-    printf("Pushed: %d\n", item);
+    printf("ÈëÕ» %d\n", item);
 }
 
 // ³öÕ»
 int pop(struct Stack* stack) {
     if (isEmpty(stack)) {
-        printf("Stack is empty\n");
+        printf("Õ»¿Õ\n");
         return -1;
     }
     int item = stack->array[stack->top];
@@ -58,7 +58,7 @@ int pop(struct Stack* stack) {
 // »ñÈ¡Õ»¶¥ÔªËØ
 int peek(struct Stack* stack) {
     if (isEmpty(stack)) {
-        printf("Stack is empty\n");
+        printf("Õ»¿Õ\n");
         return -1;
     }
     return stack->array[stack->top];
@@ -71,12 +71,12 @@ int main() {
     push(stack, 2);
     push(stack, 3);
 
-    printf("Peeked: %d\n", peek(stack));
+    printf("Õ»¶¥ %d\n", peek(stack));
 
-    printf("Popped: %d\n", pop(stack));
-    printf("Popped: %d\n", pop(stack));
+    printf("³öÕ» %d\n", pop(stack));
+    printf("³öÕ» %d\n", pop(stack));
 
-    printf("Peeked: %d\n", peek(stack));
+    printf("Õ»¶¥ %d\n", peek(stack));
 
     return 0;
 }

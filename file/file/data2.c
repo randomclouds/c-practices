@@ -44,6 +44,15 @@ void displayForward(struct Node* head) {
     printf("\n");
 }
 
+//获取尾节点
+struct Node* getTail(struct Node* index) {
+    struct Node* current = index;
+    while (current->next != NULL && current != NULL) {
+        current = current->next;
+    }
+    return current;
+}
+
 // 遍历并打印链表元素（反向）
 void displayBackward(struct Node* tail) {
     struct Node* current = tail;
@@ -63,12 +72,12 @@ int main() {
     insert(&head, 3);
 
     // 打印链表元素（正向）
-    printf("Forward traversal: ");
+    printf("正向: ");
     displayForward(head);
 
     // 打印链表元素（反向）
-    printf("Backward traversal: ");
-    displayBackward(head);
+    printf("方向: ");
+    displayBackward(getTail(head));
 
     return 0;
 }
