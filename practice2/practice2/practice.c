@@ -545,3 +545,104 @@
 //    printf("%d %d", b, c);
 //    return 0;
 //}
+
+//int main() {
+//	int i = 0, num;
+//	while (1) {
+//		scanf("%d", &num);
+//		i++;
+//		if (num == 250) break;
+//	}
+//	printf("%d", i);
+//	return 0;
+//}
+
+//int main() {
+//    int num, i, mem = 0, maxlen = 0,;
+//    scanf("%d", &num);
+//    for (i = 2; i * i <= num; i++) {
+//        int j = i, tmp = num;
+//        while (1) {
+//            if (tmp % j != 0) break;
+//            else {
+//                tmp /= j;
+//            }
+//            j++;
+//        }
+//        if (maxlen < j - i) {
+//            mem = i;
+//            maxlen = j - i;
+//        }
+//    }
+//    printf("%d\n", maxlen);
+//    while (--maxlen) printf("%d*", mem++);
+//    printf("%d", mem);
+//
+//    return 0;
+//}
+
+//int main() {
+//    int N;
+//    scanf("%d", &N);
+//    int maxLen = 0;
+//    int maxSeqStart = 0;
+//
+//    for (int i = 2; i * i <= N; i++) {
+//        int j = i;
+//        int product = 1;
+//        while (1) {
+//            product *= j;
+//            if (N % product != 0) {
+//                break;
+//            }
+//            if (j - i + 1 > maxLen) {
+//                maxLen = j - i + 1;
+//                maxSeqStart = i;
+//            }
+//            j++;
+//        }
+//    }
+//
+//    if (maxLen == 0) {
+//        printf("1\n%d\n", N);
+//    }
+//    else {
+//        printf("%d\n", maxLen);
+//        for (int i = maxSeqStart; i < maxSeqStart + maxLen; i++) {
+//            if (i < maxSeqStart + maxLen - 1) {
+//                printf("%d*", i);
+//            }
+//            else {
+//                printf("%d\n", i);
+//            }
+//        }
+//    }
+//
+//    return 0;
+//}
+
+//int main() {
+//    double height, sum = 0;
+//    int n;
+//    scanf("%lf %d", &height, &n);
+//    sum -= height;
+//    height *= 2;
+//    for (int i = 0; i < n; i++) {
+//        sum += height;
+//        height /= 2;
+//    }
+//    printf("%.1f %.1f", sum, height / 2);
+//    return 0;
+//}
+
+int main() {
+    int n, last = 0, now = 1, month = 1;
+    scanf("%d", &n);
+    for (month = 1; now < n; month++) {
+        int tmp = now;
+        now += last;
+        last = tmp;
+    }
+    printf("%d\n", month);
+    return 0;
+}

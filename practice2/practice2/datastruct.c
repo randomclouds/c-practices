@@ -349,20 +349,20 @@
 //	return 0;
 //}
 
-int main() {
-    int a;
-    scanf("%d", &a);
-    double* arr = (double*)malloc(sizeof(double)*a);
-    char ch;
-    for (int i = 0; i < a; i++) {
-        getchar();
-        scanf("%c %lf", &ch, &arr[i]);
-        if (ch == 'M') arr[i] /= 1.09;
-        else  arr[i] *= 1.09;
-    }
-    for (int i = 0; i < a; i++) {
-        printf("%.2f\n", arr[i]);
-    }
-    free(arr);
-    return 0;
-}
+//int main() {
+//    int a;
+//    scanf("%d", &a);
+//    double* arr = (double*)malloc(sizeof(double)*a);
+//    char ch;
+//    for (int i = 0; i < a; i++) {
+//        getchar();
+//        scanf("%c %lf", &ch, &arr[i]);
+//        if (ch == 'M') arr[i] /= 1.09;
+//        else  arr[i] *= 1.09;
+//    }
+//    for (int i = 0; i < a; i++) {
+//        printf("%.2f\n", arr[i]);
+//    }
+//    free(arr);
+//    return 0;
+//}
