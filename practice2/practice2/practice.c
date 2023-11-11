@@ -635,14 +635,14 @@
 //    return 0;
 //}
 
-int main() {
-    int n, last = 0, now = 1, month = 1;
-    scanf("%d", &n);
-    for (month = 1; now < n; month++) {
-        int tmp = now;
-        now += last;
-        last = tmp;
-    }
-    printf("%d\n", month);
-    return 0;
-}
+//int main() {
+//    int n, last = 0, now = 1, month = 1;
+//    scanf("%d", &n);
+//    for (month = 1; now < n; month++) {
+//        int tmp = now;
+//        now += last;
+//        last = tmp;
+//    }
+//    printf("%d\n", month);
+//    return 0;
+//}
