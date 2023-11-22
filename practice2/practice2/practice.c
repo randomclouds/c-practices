@@ -646,3 +646,294 @@
 //    printf("%d\n", month);
 //    return 0;
 //}
+
+//int* sort(int num) {
+//    int* n = (int*)malloc(sizeof(int) * 3);
+//    for (int i = 0; i < 3; i++) {
+//        n[i] = num % 10;
+//        num /= 10;
+//    }
+//    for (int i = 0; i < 3; i++) {
+//        int min = i;
+//        for (int j = i; j < 3; j++) {
+//            if (n[j] < n[min]) min = j;
+//        }
+//        if (i != min) {
+//            char tmp = n[min];
+//            n[min] = n[i];
+//            n[i] = tmp;
+//        }
+//    }
+//    return n;
+//}
+//
+//int a = 0;
+//
+//void print(int num) {
+//    a++;
+//    int min = 0, max = 0;
+//    int* nArr = sort(num);
+//    for (int i = 0; i < 3; i++) {
+//        min = min * 10 + nArr[i];
+//    }
+//    for (int i = 2; i >= 0; i--) {
+//        max = max * 10 + nArr[i];
+//    }
+//    free(nArr);
+//    printf("%d: %d - %d = %d", a, max, min, max - min);
+//    if (max - min == 0) return;
+//    if (max - min != 495) {
+//        printf("\n");
+//        print(max - min);
+//    }
+//
+//}
+//
+//int main() {
+//    int num;
+//    scanf("%d", &num);
+//    print(num);
+//
+//    return 0;
+//}
+
+
+//int Count_Digit(const int N, const int D);
+//
+//int main()
+//{
+//    int N, D;
+//
+//    scanf("%d %d", &N, &D);
+//    printf("%d\n", Count_Digit(N, D));
+//    return 0;
+//}
+//
+//
+//int Count_Digit(const int N, const int D) {
+//    if (N < 0) return Count_Digit(-N, D);
+//    if (N < 10) return N == D ? 1 : 0;
+//    else {
+//        if (N % 10 == D) return 1 + Count_Digit(N / 10, D);
+//        else return Count_Digit(N / 10, D);
+//    }
+//}
+
+
+//void Print_Factorial(const int N);
+//
+//int main()
+//{
+//    int N;
+//
+//    scanf("%d", &N);
+//    Print_Factorial(N);
+//    return 0;
+//}
+//
+//void Print_Factorial(const int N) {
+//    if (N < 0) printf("Invalid input\n");
+//    else {
+//        long long mod = 1;
+//        for (int i = 1; i <= N; i++) {
+//            mod *= i;
+//        }
+//        printf("%llu\n", mod);
+//    }
+//}
+
+//#include <string.h>
+//
+//#define MAX_DIGITS 3000
+//
+//void Print_Factorial(const int N) {
+//    if (N < 0) {
+//        printf("Invalid input\n");
+//        return;
+//    }
+//    if (N == 0) {
+//        printf("1\n");
+//        return;
+//    }
+//
+//    int result[MAX_DIGITS] = { 0 };
+//    result[0] = 1; // 初始化结果为1
+//    int result_size = 1; // 结果的当前大小
+//
+//    // 计算阶乘
+//    for (int x = 2; x <= N; x++) {
+//        int carry = 0;
+//        for (int i = 0; i < result_size; i++) {
+//            int prod = result[i] * x + carry;
+//            result[i] = prod % 10; // 存储当前位的结果
+//            carry = prod / 10; // 计算进位
+//        }
+//
+//        // 处理剩余的进位
+//        while (carry) {
+//            result[result_size] = carry % 10;
+//            carry = carry / 10;
+//            result_size++;
+//        }
+//    }
+//
+//    // 打印结果
+//    for (int i = result_size - 1; i >= 0; i--) {
+//        printf("%d", result[i]);
+//    }
+//    printf("\n");
+//}
+//
+//int main() {
+//    int N = 0;
+//    scanf("%d", &N);
+//    Print_Factorial(N);
+//
+//    return 0;
+//}
+
+//void pyramid(int n) {
+//    for (int i = 1; i <= n; i++) {
+//        for (int j = 0; j < n - i; j++) {
+//            printf(" ");
+//        }
+//        for (int j = 0; j < i; j++) {
+//            printf("%d ", i);
+//        }
+//        printf("\n");
+//    }
+//}
+
+//int narcissistic(int num) {
+//    int sum = 0, tmp = num;
+//    while (num) {
+//        int o = num % 10;
+//        sum += o * o * o;
+//        num /= 10;
+//    }
+//    return sum == tmp;
+//}
+//
+//void PrintN(int m, int n) {
+//    for (int i = m + 1; i < n; i++) {
+//        if (narcissistic(i)) printf("%d\n", i);
+//    }
+//}
+//
+//int main() {
+//    PrintN(153, 4000);
+//    return 0;
+//}
+
+//
+//int factorsum(int number) {
+//    int sum = 0;
+//    for (int i = 1; i < number; i++) {
+//        if (number % i == 0) sum += i;
+//    }
+//    return sum;
+//}
+//
+//void PrintPN(int m, int n) {
+//    int flag = 0;
+//    for (int i = m; i <= n; i++) {
+//        if (factorsum(i) == i) {
+//            flag = 1;
+//            printf("%d = 1 ", i);
+//            for (int j = 2; j < i; j++) {
+//                if (i % j == 0) printf("+ %d ", j);
+//            }
+//            printf("\n");
+//        }
+//    }
+//    if (!flag) printf("No perfect number\n");
+//}
+//
+//int factorsum(int number);
+//void PrintPN(int m, int n);
+//
+//int main()
+//{
+//    int m, n;
+//
+//    scanf("%d %d", &m, &n);
+//    if (factorsum(m) == m) printf("%d is a perfect number\n", m);
+//    if (factorsum(n) == n) printf("%d is a perfect number\n", n);
+//    PrintPN(m, n);
+//
+//    return 0;
+//}
+
+//int fib(int n) {
+//    if (n < 3) return 1;
+//    int a = 1, b = 1, c;
+//    for (int i = 3; i <= n; i++) {
+//        c = a + b;
+//        a = b;
+//        b = c;
+//    }
+//    return c;
+//}
+//
+//void PrintFN(int m, int n) {
+//    int i = 1, flag = 0;
+//    while (fib(i) <= n) {
+//        if (fib(i) >= m) {
+//            flag = 1;
+//            if (fib(i + 1) <= n) printf("%d ", fib(i));
+//            else printf("%d", fib(i));
+//        }
+//        i++;
+//    }
+//    if (!flag) printf("No Fibonacci number\n");
+//    else printf("\n");
+//}
+//
+//int main() {
+//    int m, n, t;
+//    scanf("%d %d %d", &m, &n, &t);
+//    printf("fib(%d) = %d\n", t, fib(t));
+//    PrintFN(m, n);
+//    return 0;
+//}
+
+//int prime(int p);
+//void Goldbach(int n);
+//
+//int main()
+//{
+//    int m, n, i, cnt;
+//
+//    scanf("%d %d", &m, &n);
+//    if (prime(m) != 0) printf("%d is a prime number\n", m);
+//    if (m < 6) m = 6;
+//    if (m % 2) m++;
+//    cnt = 0;
+//    for (i = m; i <= n; i += 2) {
+//        Goldbach(i);
+//        cnt++;
+//        if (cnt % 5) printf(", ");
+//        else printf("\n");
+//    }
+//
+//    return 0;
+//}
+//
+//int prime(int p) {
+//    int i = 2;
+//    for (; i <= p; i++) {
+//        if (p % i == 0) break;
+//    }
+//    return i == p ? 1 : 0;
+//}
+//
+//void Goldbach(int n) {
+//    for (int i = 2; i + i < n; i++) {
+//        if (prime(i)) {
+//            if (prime(n - i)) {
+//                printf("%d=%d+%d", n, i, n - i);
+//                continue;
+//            }
+//        }
+//    }
+//}

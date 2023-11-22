@@ -42,47 +42,61 @@
 //    return 0;
 //}
 
-#include <stdio.h>
-#include <string.h>
+//#include <stdio.h>
+//#include <string.h>
+//
+//int main() {
+//    char isbn[14]; // 为了容纳分隔符和结束符，长度设为14
+//    fgets(isbn, 14, stdin);
+//
+//    // 去除输入中的分隔符“-”
+//    char isbn_digits[10];
+//    int j = 0;
+//    for (int i = 0; i < 13; i++) {
+//        if (isbn[i] != '-') {
+//            isbn_digits[j] = isbn[i];
+//            j++;
+//        }
+//    }
+//    isbn_digits[9] = '\0'; // 添加字符串结束符
+//
+//    // 计算识别码
+//    int total = 0;
+//    for (int i = 0; i < 9; i++) {
+//        total += (isbn_digits[i] - '0') * (i + 1);
+//    }
+//
+//    // 判断识别码是否正确
+//    char correct_isbn[14];
+//    strcpy(correct_isbn, isbn);
+//    if (total % 11 == 10) {
+//        correct_isbn[12] = 'X';
+//    }
+//    else {
+//        correct_isbn[12] = (total % 11) + '0';
+//    }
+//
+//    // 输出结果
+//    if (strcmp(isbn, correct_isbn) == 0) {
+//        printf("Right\n");
+//    }
+//    else {
+//        printf("%s", correct_isbn);
+//    }
+//
+//    return 0;
+//}
 
-int main() {
-    char isbn[14]; // 为了容纳分隔符和结束符，长度设为14
-    fgets(isbn, 14, stdin);
-
-    // 去除输入中的分隔符“-”
-    char isbn_digits[10];
-    int j = 0;
-    for (int i = 0; i < 13; i++) {
-        if (isbn[i] != '-') {
-            isbn_digits[j] = isbn[i];
-            j++;
-        }
-    }
-    isbn_digits[9] = '\0'; // 添加字符串结束符
-
-    // 计算识别码
-    int total = 0;
-    for (int i = 0; i < 9; i++) {
-        total += (isbn_digits[i] - '0') * (i + 1);
-    }
-
-    // 判断识别码是否正确
-    char correct_isbn[14];
-    strcpy(correct_isbn, isbn);
-    if (total % 11 == 10) {
-        correct_isbn[12] = 'X';
-    }
-    else {
-        correct_isbn[12] = (total % 11) + '0';
-    }
-
-    // 输出结果
-    if (strcmp(isbn, correct_isbn) == 0) {
-        printf("Right\n");
-    }
-    else {
-        printf("%s", correct_isbn);
-    }
-
-    return 0;
-}
+//
+//int main() {
+//	int time;
+//	scanf("%d", &time);
+//	int h, m, s;
+//	h = time / 3600;
+//	m = time % 3600 / 60;
+//	s = time % 3600 % 60;
+//	printf("%02d:%02d:%02d", h, m, s);
+//	if (h <= 12) printf(" am\n");
+//	else printf(" pm");
+//	return 0;
+//}
