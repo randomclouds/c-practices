@@ -3,6 +3,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <math.h>
+#include<ctype.h>
 //typedef struct ski { 
 //	int value;
 //	int hur;
@@ -937,3 +938,274 @@
 //        }
 //    }
 //}
+
+//int f(int n);
+//
+//int main()
+//{
+//    int n;
+//
+//    scanf("%d", &n);
+//    printf("%d\n", f(n));
+//
+//    return 0;
+//}
+//
+//int f(int n);
+//
+//int f(int n) {
+//    if (n < 3) return 1;
+//    else return f(n - 1) + f(n - 2);
+//}
+//
+//int main() {
+//    int num;
+//    char c;
+//    scanf("%d %c", &num, &c);
+//    int n = 1;
+//    while (1) {
+//        if (2 * n * n <= num + 1 && 2 * (n + 1) * (n + 1) > num + 1) break;
+//        n++;
+//    }
+//    for (int i = 0; i < n; i++) {
+//        for (int j = 0; j < i; j++) printf(" ");
+//        for (int j = 0; j < 2 * (n - i) - 1; j++) printf("%c", c);
+//        printf("\n");
+//    }
+//    for (int i = 0; i < n - 1; i++) {
+//        for (int j = 0; j < n - 2 - i; j++) printf(" ");
+//        for (int j = 0; j < 2 * (i + 1) + 1; j++) printf("%c", c);
+//        printf("\n");
+//    }
+//    printf("%d", num - (2 * n * n - 1));
+//    return 0;
+//}
+
+
+//void limitedSort(int* arr, int len, int k) {
+//    for (int i = 0; i < k; i++) {
+//        for (int j = 0; j < len - 1 - i; j++) {
+//            if (arr[j] > arr[j + 1]) {
+//                int tmp = arr[j];
+//                arr[j] = arr[j + 1];
+//                arr[j + 1] = tmp;
+//            }
+//        }
+//    }
+//}
+//
+//int main() {
+//    int a, k;
+//    scanf("%d %d", &a, &k);
+//    int* arr = (int*)malloc(sizeof(int) * a);
+//    for (int i = 0; i < a; i++) {
+//        scanf("%d", &arr[i]);
+//    }
+//    limitedSort(arr, a, k);
+//    int count = 0;
+//    for (int i = 0; i < a; i++) {
+//        if (i) {
+//            count++;
+//            printf(" ");
+//        }
+//        printf("%d", arr[i]);
+//    }
+//    printf("\n%d", count);
+//    free(arr);
+//    return 0;
+//}
+//dp[i] = (dp[i] > (j > dp[j] ? j : dp[j]) * (i - j > dp[i - j] ? i - j : dp[i - j])) ? dp[i] : (j > dp[j] ? j : dp[j]) * (i - j > dp[i - j] ? i - j : dp[i - j]);
+
+
+//int n, store[30], place = -1, count = 0, sum = 0;
+//
+//int recursion(int i) {
+//	if (sum == n) {
+//		count++;
+//		printf("%d=", n);
+//		for (int i = 0; i < place; i++) {
+//			printf("%d+", store[i]);
+//		}
+//		if (count % 4 == 0) printf("%d\n", store[place]);
+//		else if (store[place] == n) printf("%d", store[place]);
+//		else printf("%d;", store[place]);
+//		return 0;
+//	}
+//	if (sum > n) return 0;
+//	for (int j = i; j <= n; j++) {
+//		place++;
+//		store[place] = j;
+//		sum += j;
+//		recursion(j);
+//		sum -= j;
+//		place--;
+//	}
+//
+//}
+//
+//int main() {
+//	scanf("%d", &n);
+//	recursion(1);
+//	return 0;
+//}
+
+
+//int main() {
+//	int a = 123;
+//	char* b = itoa
+//	printf("%d", a);
+//	return 0;
+//}
+
+//int count = 0, N, top = -1, sum = 0, store[30] = { 0 };
+//
+//void fan(int n) {
+//    if (sum == N) {//Êä³ö
+//        count++;
+//        printf("%d=", N);
+//        for (int i = 0; i < top; i++) {
+//            printf("%d+", store[i]);
+//        }
+//
+//        if (count % 4 == 0) {
+//            printf("%d\n", store[top]);
+//        }
+//        else if (store[top] == N) {
+//            printf("%d", store[top]);
+//        }
+//        else {
+//            printf("%d;", store[top]);
+//        }
+//        return;
+//    }
+//    else if (sum > N) return;
+//
+//    for (int i = n; i <= N; i++) {
+//        top++;
+//        sum += i;
+//        store[top] = i;
+//        fan(i);
+//        top--;
+//        sum -= i;
+//    }
+//}
+//
+//int main() {
+//    scanf("%d", &N);
+//    fan(1);
+//    return 0;
+//}
+
+//void fan(int a) {
+//    int maxLenbegin = a, len = 0;
+//    
+//    for (int i = 2; i < a / i; i++) {
+//        int count = 0, tmp = a;
+//        for (int j = i; j * (j + 1) <= a; j++) {
+//            if (tmp % j == 0) {
+//                count++;
+//                tmp /= j;
+//            }
+//            else break;
+//        }
+//        if (count > len) {
+//            len = count;
+//            maxLenbegin = i;
+//        }
+//    }
+//
+//    printf("%d\n", len);
+//    printf("%d", maxLenbegin);
+//    for (int i = 1; i < len; i++) {
+//        printf("*%d", maxLenbegin + i);
+//    }
+//}
+//
+//int main() {
+//    int a;
+//    scanf("%d", &a);
+//    fan(a);
+//    return 0;
+//}
+
+//int store[30] = { 0 }, top = -1;
+//
+//int is_prime(int a) {
+//    int flag = 1;
+//    for (int j = 2; j < a / j; j++) {
+//        if (a % j == 0) flag = 0;
+//    }
+//    return flag;
+//}
+//
+//void fa(long a) {
+//    long tmp = a;
+//    store[0] = tmp;
+//    for (int i = 2; i <= a; i++) {
+//        if (is_prime(i) && tmp % i == 0) {
+//            tmp /= i;
+//            store[++top] = i;
+//            i--;
+//        }
+//    }
+//    printf("%ld=", a);
+//
+//    int i = 0, j = i;
+//    for (; store[j] == store[i]; j++);
+//    printf("%d", store[i]);
+//    if (j - i != 1) printf("^%d", j - i);
+//
+//    while (j <= top) {
+//        i = j;
+//        for (; store[j] == store[i]; j++);
+//        printf("*%d", store[i]);
+//        if (j - i != 1) printf("^%d", j - i);
+//    }
+//}
+//
+//int main() {
+//    long a;
+//    scanf("%d", &a);
+//    fa(a);
+//    return 0;
+//}
+
+int store[30] = { 0 }, top = -1;
+
+void fa(long a) {
+    if (a == 1) {
+        printf("1=1");
+        return;
+    }
+    long tmp = a;
+
+    for (int i = 2; i <= a; i++) {
+        if (tmp % i == 0 && tmp ) {
+            tmp /= i;
+            store[++top] = i;
+            i--;
+        }
+    }
+    printf("%ld=", a);
+
+    int i = 0, j = i;
+    for (; store[j] == store[i]; j++);
+    printf("%d", store[i]);
+    if (j - i != 1) printf("^%d", j - i);
+
+    while (j <= top) {
+        i = j;
+        for (; store[j] == store[i]; j++);
+        printf("*%d", store[i]);
+        if (j - i != 1) printf("^%d", j - i);
+    }
+}
+
+int main() {
+    long a;
+    scanf("%ld", &a);
+    fa(a);
+    return 0;
+}
+
+
