@@ -178,3 +178,90 @@
 //
 //    return 0;
 //}
+
+//选择排序
+//void ChooseSort(int* arr, int len) {
+//	for (int i = 0; i < len - 1; i++) {
+//		int max = i;
+//		for (int j = i + 1; j < len; j++) {
+//			if (arr[j] > arr[max]) max = j;
+//		}
+//		if (max != i) {
+//			int tmp = arr[i];
+//			arr[i] = arr[max];
+//			arr[max] = tmp;
+//		}
+//	}
+//}
+//
+//int main() {
+//	int a;
+//	scanf("%d", &a);
+//	int len = a + a + 2;
+//	int** arr = (int**)malloc(sizeof(int*) * a);
+//	if (!arr) {
+//		printf("Error\n");
+//		return 1;
+//	}
+//
+//	for (int i = 0; i < a; i++) {
+//		arr[i] = (int*)malloc(sizeof(int) * a);
+//		if (arr[i] == NULL) {
+//			printf("Error\n");
+//			return 1;
+//		}
+//	}
+//	int* arrSum = (int*)malloc(sizeof(int) * len);
+//	if (arrSum == NULL) {
+//		printf("Error\n");
+//		return 1;
+//	}
+//
+//	for (int i = 0; i < a; i++) {
+//		for (int j = 0; j < a; j++) {
+//			scanf("%d", &arr[i][j]);
+//		}
+//	}
+//
+//	int k = 0, sum = 0;
+//	//求行列和
+//	for (int i = 0; i < a; i++) {
+//		sum = 0;
+//		for (int j = 0; j < a; j++) {
+//			sum += arr[i][j];
+//		}
+//		arrSum[k++] = sum;
+//
+//		sum = 0;
+//		for (int j = 0; j < a; j++) {
+//			sum += arr[j][i];
+//		}
+//		arrSum[k++] = sum;
+//	}
+//
+//	//求对角线
+//	sum = 0;
+//	for (int i = 0, j = 0; i < a && j < a; i++, j++) {
+//		sum += arr[i][j];
+//	}
+//	arrSum[k++] = sum;
+//
+//	sum = 0;
+//	for (int i = 0, j = a - 1; i < a && j >= 0; i++, j--) {
+//		sum += arr[i][j];
+//	}
+//	arrSum[k] = sum;
+//
+//	//排序
+//	ChooseSort(arrSum, len);
+//	//打印
+//	for (int i = 0; i < len; i++) {
+//		printf("%d ", arrSum[i]);
+//	}
+//
+//	for (int i = 0; i < a; i++) {
+//		free(arr[i]);
+//	}
+//	free(arr);
+//	return 0;
+//}

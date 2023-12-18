@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+using namespace std;
 
 //int main() {
 //    char op = 0;
@@ -41,3 +42,40 @@
 //    }
 //    return 0;
 //}
+
+//int main() {
+//	int row, col;
+//	scanf("%d %d", &row, &col);
+//	int** arr = (int**)malloc(sizeof(int*) * row);
+//	for (int i = 0; i < row; i++) {
+//		*(arr + i) = (int*)malloc(sizeof(int) * col);
+//	}
+//	for (int i = 0; i < row; i++) {
+//		for (int j = 0; j < col; j++) {
+//			scanf("%d", &arr[i][j]);
+//		}
+//	}
+//
+//	for (int i = 0; i < row; i++) {
+//		int flag = 1;
+//		for (int j = 0; j < col; j++) {
+//			if (flag) {
+//				printf("%d", arr[i][j]);
+//				flag = 0;
+//			}
+//
+//			else printf("-%d", arr[i][j]);
+//		}
+//		printf("\n");
+//	}
+//
+//	for (int i = 0; i < row; i++) {
+//		free(*(arr + i));
+//		*(arr + i) = NULL;
+//	}
+//	free(arr);
+//	arr = NULL;
+//
+//	return 0;
+//}
+

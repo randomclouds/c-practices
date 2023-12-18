@@ -1170,42 +1170,121 @@
 //    return 0;
 //}
 
-int store[30] = { 0 }, top = -1;
+//int store[30] = { 0 }, top = -1;
+//
+//void fa(long a) {
+//    if (a == 1) {
+//        printf("1=1");
+//        return;
+//    }
+//    long tmp = a;
+//
+//    for (int i = 2; i <= a; i++) {
+//        if (tmp % i == 0 && tmp ) {
+//            tmp /= i;
+//            store[++top] = i;
+//            i--;
+//        }
+//    }
+//    printf("%ld=", a);
+//
+//    int i = 0, j = i;
+//    for (; store[j] == store[i]; j++);
+//    printf("%d", store[i]);
+//    if (j - i != 1) printf("^%d", j - i);
+//
+//    while (j <= top) {
+//        i = j;
+//        for (; store[j] == store[i]; j++);
+//        printf("*%d", store[i]);
+//        if (j - i != 1) printf("^%d", j - i);
+//    }
+//}
+//
+//int main() {
+//    long a;
+//    scanf("%ld", &a);
+//    fa(a);
+//    return 0;
+//}
 
-void fa(long a) {
-    if (a == 1) {
-        printf("1=1");
-        return;
-    }
-    long tmp = a;
+//int count = 0;
+//
+//int Insertion_sort(int arr[], int len) {
+//	for (int i = 1; i < len; i++) {
+//		int tmp = arr[i], j = i;
+//		for (j = i ; j > 0 && tmp < arr[j-1]; j--) {
+//			arr[j] = arr[j - 1];
+//			count++;
+//		}
+//		if (j != i) arr[j] = tmp;
+//	}
+//	return count;
+//}
+//
+//int Bubble_Sort(int arr[], int len) {
+//	for (int i = 0; i < len; i++) {
+//		int flag = 0;
+//		for (int j = 0; j < len - 1 - i; j++) {
+//			if (arr[j] > arr[j + 1]) {
+//				count++;
+//				int tmp = arr[j];
+//				arr[j] = arr[j + 1];
+//				arr[j + 1] = tmp;
+//				flag = 1;
+//			}
+//		}
+//		if (!flag) break;
+//	}
+//	return count;
+//}
+//
+//int main() {
+//	int arr[] = { 34, 8, 64, 51, 32, 21 };
+//	int len = sizeof(arr) / sizeof(int);
+//	//printf("%d", Insertion_sort(arr, len));
+//	printf("%d", Bubble_Sort(arr, len));
+//	return 0;
+//}
 
-    for (int i = 2; i <= a; i++) {
-        if (tmp % i == 0 && tmp ) {
-            tmp /= i;
-            store[++top] = i;
-            i--;
-        }
-    }
-    printf("%ld=", a);
 
-    int i = 0, j = i;
-    for (; store[j] == store[i]; j++);
-    printf("%d", store[i]);
-    if (j - i != 1) printf("^%d", j - i);
-
-    while (j <= top) {
-        i = j;
-        for (; store[j] == store[i]; j++);
-        printf("*%d", store[i]);
-        if (j - i != 1) printf("^%d", j - i);
-    }
-}
+typedef struct MaxSubseqSum {
+    int value;
+    int count;
+    int pos;
+}MaxSuSum;
 
 int main() {
-    long a;
-    scanf("%ld", &a);
-    fa(a);
+    int N, Count = 0, flag = 1;
+    int Sum = 0;
+    MaxSuSum S1 = { 0 };
+
+    scanf("%d", &N);
+    S1.count = N;
+    int arr[N];
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &arr[i]);
+    }
+    for (int i = 0; i < N; i++) {
+        Sum += arr[i];
+        Count++;
+
+        if (Sum < 0) {
+            Sum = 0;
+            flag = 1;
+            continue;
+        }
+        if (Sum > S1.value) {
+            S1.value = Sum;
+            S1.count = Count;
+            if (flag) {
+                S1.pos = i;
+                flag = 0;
+            }
+        }
+    }
+
+    if (S1.value < 0) printf("%d %d %d", S1.value, arr[S1.pos], arr[S1.pos + S1.count - 2]);
+    else printf("%d %d %d", S1.value, arr[S1.pos], arr[S1.count - 1]);
     return 0;
 }
-
-
