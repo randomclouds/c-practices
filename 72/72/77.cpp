@@ -79,3 +79,57 @@ using namespace std;
 //	return 0;
 //}
 
+//#include <iostream>
+//using namespace std;
+//
+//int arr[100000] = { 0 };
+//void FindMaxSeries(int arr[], int len)
+//{
+//    int ThisSum = 0;
+//    int LastSum = 0;
+//    int fst = 0;
+//    int last = len - 1;
+//    int temp = 0;
+//    for (int i = 0; i < len; ++i)
+//    {
+//        ThisSum += arr[i];
+//        if (arr[i] != 0) ++temp;
+//        if (ThisSum > LastSum)
+//        {
+//            LastSum = ThisSum;
+//            last = i;
+//            fst = i - temp + 1;
+//        }
+//        else
+//        {
+//            if (ThisSum < 0)
+//            {
+//                ThisSum = 0;
+//                temp = 0;
+//            }
+//        }
+//    }
+//    if (LastSum == 0)
+//    {
+//        for (int i = 0; i < len; ++i)
+//        {
+//            if (arr[i] == 0)
+//            {
+//                fst = i;
+//                last = i;
+//            }
+//        }
+//    }
+//    cout << LastSum << " " << arr[fst] << " " << arr[last];
+//}
+//int main()
+//{
+//    int N = 0;
+//    cin >> N;
+//    for (int i = 0; i < N; ++i)
+//    {
+//        cin >> arr[i];
+//    }
+//    FindMaxSeries(arr, N);
+//    return 0;
+//}
