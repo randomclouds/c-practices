@@ -853,3 +853,541 @@
 //        if (flag) printf("%s\n", det[i]);
 //    }
 //}
+
+
+//int main() {
+//    int N;
+//    scanf("%d", &N);
+//    int* arr = (int*)malloc(sizeof(int) * N);//store the Arrey;
+//    if (!arr) {
+//        printf("Error\n");
+//        return 1;
+//    }
+//    for (int i = 0; i < N; i++) {
+//        scanf("%d", &arr[i]);
+//    }
+//    int pos1 = 0, pos2 = N - 1;//this is for the maxinum subsequence sum indices
+//    int tpos1 = 0, tpos2 = 0, FirstMaxSum = -1, MaxSum = -1,Sum = 0, flag = 1;
+//    for (int i = 0; i < N; i++) {
+//        Sum += arr[i];
+//        if (Sum < 0) {
+//            Sum = 0;
+//            flag = 1;
+//            continue;
+//        }
+//
+//        if (Sum > MaxSum) {
+//            if (flag) {
+//                tpos1 = i;
+//            }
+//            MaxSum = Sum;
+//            flag = 0;
+//            tpos2 = i;
+//        }
+//        else if (Sum == MaxSum && !flag) {
+//            tpos2 = i;
+//        }
+//
+//        if (MaxSum > FirstMaxSum) {
+//            pos1 = tpos1;
+//            pos2 = tpos2;
+//            FirstMaxSum = MaxSum;
+//        }
+//    }
+//    printf("%d %d %d\n", FirstMaxSum, arr[pos1], arr[pos2]);
+//    free(arr);
+//    return 0;
+//}
+
+//#include <stdio.h>
+//
+//#include <stdlib.h>
+//#include <ctype.h>
+//
+//#define MAX_LEN 100
+//
+//void decompress(const char* compressed, char* decompressed) {
+//    int i = 0, j = 0, count;
+//    while (compressed[i] != '\0' && j < MAX_LEN) {
+//        if (isalpha(compressed[i])) { // 当前字符是字母
+//            decompressed[j++] = compressed[i];
+//            if (isdigit(compressed[i + 1])) { // 下一个字符是数字
+//                count = 0;
+//                i++;
+//                // 计算数字表示的重复次数
+//                while (isdigit(compressed[i]) && j < MAX_LEN) {
+//                    count = count * 10 + (compressed[i] - '0');
+//                    i++;
+//                }
+//                // 重复追加字符
+//                for (int k = 1; k < count && j < MAX_LEN; k++) {
+//                    decompressed[j++] = decompressed[j - 1];
+//                }
+//            }
+//            else {
+//                i++;
+//            }
+//        }
+//        else { // 如果当前字符不是字母，直接跳过
+//            i++;
+//        }
+//    }
+//    decompressed[j] = '\0'; // 确保解压缩后的字符串以null终结
+//}
+//
+//int main() {
+//    char compressed[MAX_LEN];
+//    char decompressed[MAX_LEN];
+//
+//    // 读取压缩字符串
+//    printf("Enter compressed string: ");
+//    scanf("%s", compressed);
+//
+//    // 解压缩字符串
+//    decompress(compressed, decompressed);
+//
+//    // 输出解压缩后的字符串
+//    printf("Decompressed string: %s\n", decompressed);
+//
+//    return 0;
+//}
+
+//int main() {
+//	char s[51];
+//	scanf("%s", s);
+//	int len = strlen(s);
+//	char tmp = 0;
+//	for (int i = 0; i < len; i++) {
+//		if (s[i] < '0' || s[i] > '9') {
+//			tmp = s[i];
+//			printf("%c", tmp);
+//		}
+//		else {
+//			int count = 0;
+//			count = s[i] - '1';
+//			if (s[i + 1] >= '0' && s[i + 1] <= '9') {
+//				count = (count + 1) * 10 + s[i + 1] - '1';
+//				i++;
+//			}
+//			for (int j = 0; j < count; j++) printf("%c", tmp);
+//		}
+//
+//	}
+//	printf("\n");
+//	return 0;
+//}
+
+//#include <stdio.h>
+//#include <string.h>
+//
+//int main() {
+//	char a, op = 0;
+//	int o[2] = { 0 }, j = 0;
+//	while(1){
+//		scanf("%c", &a);
+//		if (a == '\n') break;
+//		if (a != ' ') {
+//			if (a < '0') {
+//				j--;
+//				op = a;
+//			}
+//			else o[j] = o[j] * 10 + a - '0';
+//		}
+//		else j++;
+//	}
+//
+//	switch (op) {
+//	case '+':
+//		printf("%d\n", o[0] + o[1]);
+//		break;
+//	case '-':
+//		printf("%d\n", o[0] - o[1]);
+//		break;
+//	case '*':
+//		printf("%d\n", o[0] * o[1]);
+//		break;
+//	case '/':
+//		printf("%d\n", o[0] / o[1]);
+//		break;
+//	case '%':
+//		printf("%d\n", o[0] % o[1]);
+//		break;
+//	}
+//	return 0;
+//}
+
+//int main() {
+//	char sam, swi, sen[101];
+//	scanf("%c %c", &sam, &swi);
+//	getchar();
+//	scanf("%s", sen);
+//	int len = strlen(sen), count = 0;
+//	if (swi == '1') {
+//		for (int i = 0; i < len; i++) {
+//			if (sen[i] == sam) count++;
+//		}
+//	}
+//	else {
+//		for (int i = 0; i < len; i++) {
+//			if (sen[i] == sam || sen[i] == sam + 32 || sen[i] == sam - 32)
+//				count++;
+//		}
+//	}
+//	printf("%d", count);
+//	return 0;
+//}
+
+//#include <stdio.h>
+//#include <string.h>
+//#include <ctype.h>
+//
+//int main() {
+//    char s[100];
+//    int caseSensitive, n;
+//
+//    // 读取输入
+//    scanf("%s", s);
+//    scanf("%d", &caseSensitive);
+//    scanf("%d", &n);
+//
+//    // 处理大小写敏感选项
+//    if (caseSensitive == 0) {
+//        for (int i = 0; s[i]; i++) {
+//            s[i] = tolower(s[i]);
+//        }
+//    }
+//
+//    char text[100][100];
+//    for (int i = 0; i < n; i++) {
+//        scanf("%s", text[i]);
+//        if (caseSensitive == 0) {
+//            for (int j = 0; text[i][j]; j++) {
+//                text[i][j] = tolower(text[i][j]);
+//            }
+//        }
+//    }
+//
+//    // 检查每行文字是否包含给定字符串
+//    for (int i = 0; i < n; i++) {
+//        if (strstr(text[i], s) != NULL) {
+//            printf("%s\n", text[i]);
+//        }
+//    }
+//
+//    return 0;
+//}
+
+//选择排序
+//void ChooseSort(int* arr, int len) {
+//	for (int i = 0; i < len - 1; i++) {
+//		int max = i;
+//		for (int j = i + 1; j < len; j++) {
+//			if (arr[j] > arr[max]) max = j;
+//		}
+//		if (max != i) {
+//			int tmp = arr[i];
+//			arr[i] = arr[max];
+//			arr[max] = tmp;
+//		}
+//	}
+//}
+//
+//int main() {
+//	int a;
+//	scanf("%d", &a);
+//	int len = a + a + 2;
+//	int** arr = (int**)malloc(sizeof(int*) * a);
+//	if (!arr) {
+//		printf("Error\n");
+//		return 1;
+//	}
+//
+//	for (int i = 0; i < a; i++) {
+//		arr[i] = (int*)malloc(sizeof(int) * a);
+//		if (arr[i] == NULL) {
+//			printf("Error\n");
+//			return 1;
+//		}
+//	}
+//	int* arrSum = (int*)malloc(sizeof(int) * len);
+//	if (arrSum == NULL) {
+//		printf("Error\n");
+//		return 1;
+//	}
+//
+//	for (int i = 0; i < a; i++) {
+//		for (int j = 0; j < a; j++) {
+//			scanf("%d", &arr[i][j]);
+//		}
+//	}
+//
+//	int k = 0, sum = 0;
+//	//求行列和
+//	for (int i = 0; i < a; i++) {
+//		sum = 0;
+//		for (int j = 0; j < a; j++) {
+//			sum += arr[i][j];
+//		}
+//		arrSum[k++] = sum;
+//
+//		sum = 0;
+//		for (int j = 0; j < a; j++) {
+//			sum += arr[j][i];
+//		}
+//		arrSum[k++] = sum;
+//	}
+//
+//	//求对角线
+//	sum = 0;
+//	for (int i = 0, j = 0; i < a && j < a; i++, j++) {
+//		sum += arr[i][j];
+//	}
+//	arrSum[k++] = sum;
+//
+//	sum = 0;
+//	for (int i = 0, j = a - 1; i < a && j >= 0; i++, j--) {
+//		sum += arr[i][j];
+//	}
+//	arrSum[k] = sum;
+//
+//	//排序
+//	ChooseSort(arrSum, len);
+//	//打印
+//	for (int i = 0; i < len; i++) {
+//		printf("%d ", arrSum[i]);
+//	}
+//
+//	for (int i = 0; i < a; i++) {
+//		free(arr[i]);
+//	}
+//	free(arr);
+//	return 0;
+//}
+
+//struct medalCountry {
+//    int iPlace;
+//    char sName[3];
+//    int iMedalNum[3];
+//};
+//
+//enum medalType { GOLDMEDAL, SILVERMEDAL, BRONZEMEDAL };
+//
+//
+//void AdjustSortTable(int aSortTable[], struct medalCountry aMedalCountry[], int iCounter, int iNo, int iMedalType);
+//
+//int cmp(const int a1, const int b1);
+//
+//int main(void)
+//{
+//    int n, i, j, counter = 0;
+//    struct medalCountry aMedalCountry[206] = { 0 };
+//    struct medalCountry* pSMC;
+//    int aSortTable[206];
+//    char sNameTmp[3];
+//    scanf("%d", &n);
+//    for (i = 0; i < n; i++)
+//    {
+//        //Gold Medal
+//        scanf("%s", sNameTmp);
+//        for (j = 0; j < counter; j++)
+//        {
+//            if (!strcmp(aMedalCountry[j].sName, sNameTmp))
+//            {
+//                aMedalCountry[j].iMedalNum[GOLDMEDAL]++;
+//                AdjustSortTable(aSortTable, aMedalCountry, counter, j, GOLDMEDAL);
+//                break;
+//            }
+//        }
+//        if (j == counter)
+//        {
+//            strcpy(aMedalCountry[j].sName, sNameTmp);
+//            aMedalCountry[j].iMedalNum[GOLDMEDAL]++;
+//            aSortTable[j] = j;
+//            counter++;
+//            AdjustSortTable(aSortTable, aMedalCountry, counter, j, GOLDMEDAL);
+//        }
+//
+//        //Silver Medal
+//        scanf("%s", sNameTmp);
+//        for (j = 0; j < counter; j++)
+//        {
+//            if (!strcmp(aMedalCountry[j].sName, sNameTmp))
+//            {
+//                aMedalCountry[j].iMedalNum[SILVERMEDAL]++;
+//                AdjustSortTable(aSortTable, aMedalCountry, counter, j, SILVERMEDAL);
+//                break;
+//            }
+//        }
+//        if (j == counter)
+//        {
+//            strcpy(aMedalCountry[j].sName, sNameTmp);
+//            aMedalCountry[j].iMedalNum[SILVERMEDAL]++;
+//            aSortTable[j] = j;
+//            counter++;
+//            AdjustSortTable(aSortTable, aMedalCountry, counter, j, SILVERMEDAL);
+//        }
+//
+//        //Bronze Medal
+//        scanf("%s", sNameTmp);
+//        for (j = 0; j < counter; j++)
+//        {
+//            if (!strcmp(aMedalCountry[j].sName, sNameTmp))
+//            {
+//                aMedalCountry[j].iMedalNum[BRONZEMEDAL]++;
+//                AdjustSortTable(aSortTable, aMedalCountry, counter, j, BRONZEMEDAL);
+//                break;
+//            }
+//        }
+//        if (j == counter)
+//        {
+//            strcpy(aMedalCountry[j].sName, sNameTmp);
+//            aMedalCountry[j].iMedalNum[BRONZEMEDAL]++;
+//            aSortTable[j] = j;
+//            counter++;
+//            AdjustSortTable(aSortTable, aMedalCountry, counter, j, BRONZEMEDAL);
+//        }
+//    }
+//
+//    for (i = 0; i < counter; i++)
+//    {
+//        aMedalCountry[aSortTable[i]].iPlace = i;
+//        pSMC = aMedalCountry + aSortTable[i];
+//        printf("%3d %3s %3d %3d %3d\n", pSMC->iPlace + 1, pSMC->sName, pSMC->iMedalNum[GOLDMEDAL], pSMC->iMedalNum[SILVERMEDAL], pSMC->iMedalNum[BRONZEMEDAL]);
+//    }
+//
+//    return 0;
+//}
+//
+//void AdjustSortTable(int aSortTable[], struct medalCountry aMedalCountry[], int iCounter, int iNo, int iMedalType) {
+//    for (int i = 1; i < iCounter; i++) {
+//        int j, tmp = aSortTable[i];
+//        for (j = i; j > 0; j--) {
+//            if (aMedalCountry[tmp].iMedalNum[0] > aMedalCountry[aSortTable[j - 1]].iMedalNum[0]) {
+//                aSortTable[j] = aSortTable[j - 1];
+//            }
+//
+//            else if (aMedalCountry[tmp].iMedalNum[0] == aMedalCountry[aSortTable[j - 1]].iMedalNum[0]) {
+//                if (aMedalCountry[tmp].iMedalNum[1] > aMedalCountry[aSortTable[j - 1]].iMedalNum[1]) {
+//                    aSortTable[j] = aSortTable[j - 1];
+//                }
+//
+//                else if (aMedalCountry[tmp].iMedalNum[1] == aMedalCountry[aSortTable[j - 1]].iMedalNum[1]) {
+//                    if (aMedalCountry[tmp].iMedalNum[2] > aMedalCountry[aSortTable[j - 1]].iMedalNum[2]) {
+//                        aSortTable[j] = aSortTable[j - 1];
+//                    }
+//
+//                    else if (aMedalCountry[tmp].iMedalNum[2] == aMedalCountry[aSortTable[j - 1]].iMedalNum[2]) {
+//                        if (strcmp(aMedalCountry[tmp].sName, aMedalCountry[aSortTable[j - 1]].sName) < 0) {
+//                            aSortTable[j] = aSortTable[j - 1];
+//                        }
+//                        else break;
+//                    }
+//                    else break;
+//                }
+//                else break;
+//            }
+//
+//            else break;
+//        }
+//        aSortTable[j] = tmp;
+//    }
+//}
+
+//typedef struct {
+//	int row;
+//	int col;
+//	int squre[10][10];
+//}Squre;
+//
+//int main() {
+//	Squre S1 = { 0 };
+//	int ar, flag = 1;
+//
+//	scanf("%d %d", &S1.col, &S1.row);
+//	for (int i = 0; i < S1.row; i++) {
+//		for (int j = 0; j < S1.col; j++) {
+//			scanf("%d", &S1.squre[i][j]);
+//		}
+//	}
+//
+//	scanf("%d", &ar);
+//	switch (ar) {
+//	case 0:
+//		printf("%d %d\n", S1.col, S1.row);
+//		for (int i = 0; i < S1.row; i++) {
+//			flag = 1;
+//			for (int j = 0; j < S1.col; j++) {
+//				if (flag) {
+//					printf("%d", S1.squre[i][j]);
+//					flag = 0;
+//				}
+//				else printf(" %d", S1.squre[i][j]);
+//			}
+//			printf("\n");
+//		}
+//		break;
+//	case 90:
+//		printf("%d %d\n", S1.row, S1.col);
+//		for (int i = 0; i < S1.col; i++) {
+//			flag = 1;
+//			for (int j = S1.row - 1; j >= 0; j--) {
+//				if (flag) {
+//					printf("%d", S1.squre[j][i]);
+//					flag = 0;
+//				}
+//				else printf(" %d", S1.squre[j][i]);
+//			}
+//			printf("\n");
+//		}
+//		break;
+//	case 180:
+//		printf("%d %d\n", S1.col, S1.row);
+//		for (int i = S1.row - 1; i >= 0; i--) {
+//			flag = 1;
+//			for (int j = S1.col - 1; j >= 0; j--) {
+//				if (flag) {
+//					printf("%d", S1.squre[i][j]);
+//					flag = 0;
+//				}
+//				else printf(" %d", S1.squre[i][j]);
+//			}
+//			printf("\n");
+//		}
+//		break;
+//	case 270:
+//		printf("%d %d\n", S1.row, S1.col);
+//		for (int i = S1.col - 1; i >= 0; i--) {
+//			flag = 1;
+//			for (int j = 0; j < S1.row; j++) {
+//				if (flag) {
+//					printf("%d", S1.squre[j][i]);
+//					flag = 0;
+//				}
+//				else printf(" %d", S1.squre[j][i]);
+//			}
+//			printf("\n");
+//		}
+//		break;
+//	}
+//	return 0;
+//}
+
+//typedef struct {
+	//	double x;
+	//	double y;
+	//}Position;
+	//
+	//int main() {
+	//	Position ran[4];
+	//	for (int i = 0; i < 4; i++) {
+	//		scanf("%lf %lf", &ran[i].x, &ran[i].y);
+	//	}
+	//
+	//	int space = 0, len, wide;
+	//	len = (int)sqrt(pow(ran[0].x - ran[1].x, 2) + pow(ran[0].y - ran[1].y, 2));
+	//	wide = (int)sqrt(pow(ran[0].x - ran[2].x, 2) + pow(ran[0].y - ran[2].y, 2));
+	//	space = len * wide;
+	//	printf("%d\n", space);
+	//	return 0;
+	//}
+

@@ -1,267 +1,146 @@
 #define _CRT_SECURE_NO_WARNINGS
 #pragma warning(disable:6031)
 
-//#include <stdio.h>
+//int cmp(void*, void*);
+//void Print(contigent*, int);
+//void My_sort(contigent*, int);
+
+
+//typedef struct {
+//	char name[20];
+//	short win;
+//	short goals;
+//}contigent;
 //
-//#include <stdlib.h>
-//#include <ctype.h>
+
+//int cmp(const void* a1, const void* b1) {
+//	contigent a = *(contigent*)a1;
+//	contigent b = *(contigent*)b1;
+//	if (0 == a.win - b.win) {
+//		return a.goals - b.goals;
+//	}
+//	else return a.win - b.win;
+//}
 //
-//#define MAX_LEN 100
+//void Print(contigent* C, int num) {
+//	for (int i = 0; i < num; i++) {
+//		printf("%s %d %d\n", C[i].name, C[i].win, C[i].goals);
+//	}
+//}
 //
-//void decompress(const char* compressed, char* decompressed) {
-//    int i = 0, j = 0, count;
-//    while (compressed[i] != '\0' && j < MAX_LEN) {
-//        if (isalpha(compressed[i])) { // 当前字符是字母
-//            decompressed[j++] = compressed[i];
-//            if (isdigit(compressed[i + 1])) { // 下一个字符是数字
-//                count = 0;
-//                i++;
-//                // 计算数字表示的重复次数
-//                while (isdigit(compressed[i]) && j < MAX_LEN) {
-//                    count = count * 10 + (compressed[i] - '0');
-//                    i++;
-//                }
-//                // 重复追加字符
-//                for (int k = 1; k < count && j < MAX_LEN; k++) {
-//                    decompressed[j++] = decompressed[j - 1];
-//                }
-//            }
-//            else {
-//                i++;
-//            }
-//        }
-//        else { // 如果当前字符不是字母，直接跳过
-//            i++;
-//        }
-//    }
-//    decompressed[j] = '\0'; // 确保解压缩后的字符串以null终结
+//void Insertsort(contigent* C, int num) {
+//	for (int i = 1; i < num; i++) {
+//		contigent tmp = C[i];
+//		int j;
+//		for (j = i; j > 0; j--) {
+//			if (cmp(&tmp, &C[j - 1]) > 0) {
+//				C[j] = C[j - 1];
+//			}
+//			else break;
+//		}
+//		C[j] = tmp;
+//	}
 //}
 //
 //int main() {
-//    char compressed[MAX_LEN];
-//    char decompressed[MAX_LEN];
+//	int N;
+//	scanf("%d", &N);
+//	contigent C[10] = { 0 };
+//	for (int i = 0; i < N; i++) {
+//		scanf("%s", C[i].name);
+//	}
 //
-//    // 读取压缩字符串
-//    printf("Enter compressed string: ");
-//    scanf("%s", compressed);
+//	int score;
+//	for (int i = 0; i < N; i++) {
+//		for (int j = 0; j < N; j++) {
+//			scanf("%d", &score);
+//			switch (score) {
+//			case 0:
+//			case -3:
+//			case -4:
+//				break;
+//			case -5:
+//				C[i].goals += 1;
+//				break;
+//			case 5:
+//				C[i].goals += 2;
+//				C[i].win += 1;
+//				break;
+//			default:
+//				C[i].goals += 3;
+//				C[i].win += 1;
+//			}
+//		}
+//	}
+//	Insertsort(C, N);
+//	Print(C, N);
+//	return 0;
+//}
 //
-//    // 解压缩字符串
-//    decompress(compressed, decompressed);
+
+//struct Employee {
+//    char name[10];
+//    float basic_salary;
+//    float bonus;
+//    float expense;
+//    float net_salary;
+//};
 //
-//    // 输出解压缩后的字符串
-//    printf("Decompressed string: %s\n", decompressed);
+//int main() {
+//    int n;
+//    scanf("%d", &n); // 读取职员数量
 //
+//    struct Employee* employees = (struct Employee*)malloc(sizeof(struct Employee)*n); // 创建结构体数组来存储职员信息
+//
+//    // 逐行读取职员信息并存储到结构体数组中
+//    for (int i = 0; i < n; i++) {
+//        scanf("%s %f %f %f", employees[i].name, &employees[i].basic_salary, &employees[i].bonus, &employees[i].expense);
+//        employees[i].net_salary = employees[i].basic_salary + employees[i].bonus - employees[i].expense; // 计算实发工资
+//    }
+//
+//    // 输出每位职员的姓名和实发工资
+//    for (int i = 0; i < n; i++) {
+//        printf("%s %.2f\n", employees[i].name, employees[i].net_salary);
+//    }
+//
+//    free(employees);
 //    return 0;
 //}
 
-//int main() {
-//	char s[51];
-//	scanf("%s", s);
-//	int len = strlen(s);
-//	char tmp = 0;
-//	for (int i = 0; i < len; i++) {
-//		if (s[i] < '0' || s[i] > '9') {
-//			tmp = s[i];
-//			printf("%c", tmp);
-//		}
-//		else {
-//			int count = 0;
-//			count = s[i] - '1';
-//			if (s[i + 1] >= '0' && s[i + 1] <= '9') {
-//				count = (count + 1) * 10 + s[i + 1] - '1';
-//				i++;
-//			}
-//			for (int j = 0; j < count; j++) printf("%c", tmp);
-//		}
-//
-//	}
-//	printf("\n");
-//	return 0;
-//}
-
-//#include <stdio.h>
-//#include <string.h>
-//
-//int main() {
-//	char a, op = 0;
-//	int o[2] = { 0 }, j = 0;
-//	while(1){
-//		scanf("%c", &a);
-//		if (a == '\n') break;
-//		if (a != ' ') {
-//			if (a < '0') {
-//				j--;
-//				op = a;
-//			}
-//			else o[j] = o[j] * 10 + a - '0';
-//		}
-//		else j++;
-//	}
-//
-//	switch (op) {
-//	case '+':
-//		printf("%d\n", o[0] + o[1]);
-//		break;
-//	case '-':
-//		printf("%d\n", o[0] - o[1]);
-//		break;
-//	case '*':
-//		printf("%d\n", o[0] * o[1]);
-//		break;
-//	case '/':
-//		printf("%d\n", o[0] / o[1]);
-//		break;
-//	case '%':
-//		printf("%d\n", o[0] % o[1]);
-//		break;
-//	}
-//	return 0;
-//}
-
-//int main() {
-//	char sam, swi, sen[101];
-//	scanf("%c %c", &sam, &swi);
+////typedef struct {
+//	char name[81];
+//	double price;
+//}Book;
+//void find_max_min(Book bk[], int n, int* max_idx, int* min_idx);
+//int main()
+//{
+//	int n;
+//	scanf("%d", &n);
 //	getchar();
-//	scanf("%s", sen);
-//	int len = strlen(sen), count = 0;
-//	if (swi == '1') {
-//		for (int i = 0; i < len; i++) {
-//			if (sen[i] == sam) count++;
-//		}
+//	Book bk[N];
+//	int i;
+//	for (i = 0; i < n; i++) {
+//		gets(bk[i].name);
+//		scanf("%lf", &bk[i].price);
+//		getchar();
 //	}
-//	else {
-//		for (int i = 0; i < len; i++) {
-//			if (sen[i] == sam || sen[i] == sam + 32 || sen[i] == sam - 32)
-//				count++;
-//		}
-//	}
-//	printf("%d", count);
+//	int max_idx = 0, min_idx = 0;
+//	find_max_min(bk, n, &max_idx, &min_idx);
+//	printf("%.2lf, %s\n", bk[max_idx].price, bk[max_idx].name);
+//	printf("%.2lf, %s\n", bk[min_idx].price, bk[min_idx].name);
 //	return 0;
 //}
-
-//#include <stdio.h>
-//#include <string.h>
-//#include <ctype.h>
 //
-//int main() {
-//    char s[100];
-//    int caseSensitive, n;
-//
-//    // 读取输入
-//    scanf("%s", s);
-//    scanf("%d", &caseSensitive);
-//    scanf("%d", &n);
-//
-//    // 处理大小写敏感选项
-//    if (caseSensitive == 0) {
-//        for (int i = 0; s[i]; i++) {
-//            s[i] = tolower(s[i]);
-//        }
-//    }
-//
-//    char text[100][100];
-//    for (int i = 0; i < n; i++) {
-//        scanf("%s", text[i]);
-//        if (caseSensitive == 0) {
-//            for (int j = 0; text[i][j]; j++) {
-//                text[i][j] = tolower(text[i][j]);
-//            }
-//        }
-//    }
-//
-//    // 检查每行文字是否包含给定字符串
-//    for (int i = 0; i < n; i++) {
-//        if (strstr(text[i], s) != NULL) {
-//            printf("%s\n", text[i]);
-//        }
-//    }
-//
-//    return 0;
-//}
-
-//选择排序
-//void ChooseSort(int* arr, int len) {
-//	for (int i = 0; i < len - 1; i++) {
-//		int max = i;
-//		for (int j = i + 1; j < len; j++) {
-//			if (arr[j] > arr[max]) max = j;
+//void find_max_min(Book bk[], int n, int* max_idx, int* min_idx) {
+//	double max = 0, min = 99999.0;
+//	for (int i = 0; i < n; i++) {
+//		if (bk[i].price > max) {
+//			max = bk[i].price;
+//			*max_idx = i;
 //		}
-//		if (max != i) {
-//			int tmp = arr[i];
-//			arr[i] = arr[max];
-//			arr[max] = tmp;
+//		if (bk[i].price < min) {
+//			min = bk[i].price;
+//			*min_idx = i;
 //		}
 //	}
-//}
-//
-//int main() {
-//	int a;
-//	scanf("%d", &a);
-//	int len = a + a + 2;
-//	int** arr = (int**)malloc(sizeof(int*) * a);
-//	if (!arr) {
-//		printf("Error\n");
-//		return 1;
-//	}
-//
-//	for (int i = 0; i < a; i++) {
-//		arr[i] = (int*)malloc(sizeof(int) * a);
-//		if (arr[i] == NULL) {
-//			printf("Error\n");
-//			return 1;
-//		}
-//	}
-//	int* arrSum = (int*)malloc(sizeof(int) * len);
-//	if (arrSum == NULL) {
-//		printf("Error\n");
-//		return 1;
-//	}
-//
-//	for (int i = 0; i < a; i++) {
-//		for (int j = 0; j < a; j++) {
-//			scanf("%d", &arr[i][j]);
-//		}
-//	}
-//
-//	int k = 0, sum = 0;
-//	//求行列和
-//	for (int i = 0; i < a; i++) {
-//		sum = 0;
-//		for (int j = 0; j < a; j++) {
-//			sum += arr[i][j];
-//		}
-//		arrSum[k++] = sum;
-//
-//		sum = 0;
-//		for (int j = 0; j < a; j++) {
-//			sum += arr[j][i];
-//		}
-//		arrSum[k++] = sum;
-//	}
-//
-//	//求对角线
-//	sum = 0;
-//	for (int i = 0, j = 0; i < a && j < a; i++, j++) {
-//		sum += arr[i][j];
-//	}
-//	arrSum[k++] = sum;
-//
-//	sum = 0;
-//	for (int i = 0, j = a - 1; i < a && j >= 0; i++, j--) {
-//		sum += arr[i][j];
-//	}
-//	arrSum[k] = sum;
-//
-//	//排序
-//	ChooseSort(arrSum, len);
-//	//打印
-//	for (int i = 0; i < len; i++) {
-//		printf("%d ", arrSum[i]);
-//	}
-//
-//	for (int i = 0; i < a; i++) {
-//		free(arr[i]);
-//	}
-//	free(arr);
-//	return 0;
 //}
