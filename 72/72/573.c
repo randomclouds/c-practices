@@ -7,63 +7,54 @@
 #include <ctype.h>
 #include <string.h>
 
-//char* my_strcmp(char* src, char* det) {
-//	if (!*src && !*det) return src;
-//	if (!*src) return NULL;
-//
-//	while (*src) {
-//		char* tmps = src, *tmpd = det;
-//		int flag = 1;
-//		while (*tmpd) {
-//			if (*tmpd != *tmps) {
-//				flag = 0;
-//				break;
-//			}
-//			tmpd++;
-//			tmps++;
-//		}
-//		if (flag) {
-//			return src;
-//		}
-//		src++;
-//	}
-//
-//	return NULL;
-//
-//}
-//
-//int main() {
-//	char src[50], det[50];
-//	fgets(src, 50, stdin);
-//	fgets(det, 50, stdin);
-//	int lens = strlen(src), lend = strlen(det);
-//	lens--, lend--;
-//	src[lens] = '\0', det[lend] = '\0';
-//	char* pos = my_strcmp(src, det);
-//	if (!pos) printf("No!\n");
-//	else printf("%d\n", pos - src + 1);
-//	return 0;
-//}
-
-int cal(int a, int b) {
-	int tmp = a > b ? a : b;
-	while (1) {
-		if (tmp % a == 0 && tmp % b == 0) return tmp;
-		tmp++;
+void* Init(int row, int col) {
+	int** p = (int**)malloc(sizeof(int*) * (row + 1));
+	if (!p) {
+		exit(EXIT_FAILURE);
 	}
+	for (int i = 0; i < row + 1; i++) {
+		p[i] = (int*)calloc(col + 1, sizeof(int));
+		if (!p) {
+			exit(EXIT_FAILURE);
+		}
+	}
+	return p;
 }
 
+typedef struct {
+	int x;
+	int y;
+}Position;
+
 int main() {
-	int n, arr[200], sum;
-	scanf("%d", &n);
-	for (int i = 0; i < n; i++) {
-		scanf("%d" , &arr[i]);
+	int row, col, r, y;
+	scanf("%d %d %d %d", &row, &col, &r, &y);
+	int** p1 = (int**)Init(row, col), ** p2 = (int**)Init(row, col);
+	Position imp[100] = { 0 };
+
+	for (int i = 1; i <= r; i++) {
+		int x1, y1, x2, y2;
+		scanf("%d %d %d %d", &x1, &y1, &x2, &y2);
+		x1, y1, x2, y2;
+		for (int row = x1; row <= x2; row++) {
+			for (int col = y1; col <= y2; col++) {
+				p1[row][col]++;
+				p2[row][col] = i;
+			}
+		}
+	}
+	for (int i = 0; i < y; i++) {
+		scanf("%d %d", &imp[i].x, &imp[i].y);
 	}
 
-	sum = 0;
-	for (int i = 0; i < n - 1; i++) {
-		sum += cal(arr[i], arr[i + 1]);
+	for (int i = 0; i < y; i++) {
+		int flag = 0;
+		if (p1[imp[i].x][imp[i].y] != 0) flag = 1;
+		if (flag) {
+			printf("Y %d %d\n", p1[imp[i].x][imp[i].y], p2[imp[i].x][imp[i].y]);
+		}
+		else printf("N\n");
+
 	}
-	printf("%d\n", sum);
 	return 0;
 }
