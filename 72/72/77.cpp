@@ -3,7 +3,104 @@
 
 #include <iostream>
 #include <string>
-using namespace std;
+//using namespace std;
+//typedef struct LNode* LinkList;
+//typedef struct LNode {
+//	int val;
+//	int expon;
+//	LinkList next;
+//};
+//
+//
+//
+////这个插入只有插入的功能, 不考虑插入位置
+//void Insert(int v, int e, LinkList& rear) {
+//	LinkList one = new LNode;
+//	one->expon = e; one->val = v;
+//	one->next = rear->next;
+//	rear->next = one;
+//	rear = one;
+//}
+//
+//LinkList ReadLink() {
+//	int num, v, e;
+//	cin >> num;
+//	LinkList p = new LNode, rear = p;
+//	p->next = NULL;
+//	for (int i = 0; i < num; i++) {
+//		cin >> v >> e;
+//		Insert(v, e, rear);
+//	}
+//	LinkList q = p; p = p->next; delete q; //删去头结点
+//	return p;
+//}
+//
+//LinkList Mulpy(LinkList LA, LinkList LB) {
+//	LinkList p = new LNode, rear = p, t1 = LA, t2 = LB, q;
+//	int v, e;
+//
+//	p->next = NULL;
+//	while (t1) {  //乘上t2第一项
+//		Insert(t2->val * t1->val, t2->expon + t1->expon, rear);
+//		t1 = t1->next;
+//	}
+//	t2 = t2->next;
+//	while (t2) {
+//		t1 = LA; rear = p;
+//		while (t1) {
+//			LinkList one = new LNode;
+//			v = t2->val * t1->val; 
+//			e = t2->expon + t1->expon;
+//			while (rear->next && e < rear->next->expon)
+//				rear = rear->next;
+//			if (rear->next && e == rear->next->expon) {//这里是比较重要的, 注意要判断rear下一个节点是否是空的
+//				rear->next->val += v;
+//				if (!rear->next->val) {
+//					q = rear->next;
+//					rear->next = rear->next->next;
+//					delete q;
+//				}
+//			}
+//			else Insert(v, e, rear);
+//			t1 = t1->next;
+//		}
+//		t2 = t2->next;
+//	}
+//	q = p; p = p->next; delete q;
+//	return p;
+//}
+//
+//void Print(LinkList p) {
+//	if (!p) {
+//		cout << "0 0" << endl;
+//		return;
+//	}
+//	int flag = 0;
+//	while (p) {
+//		if (!flag) flag = 1;
+//		else cout << " ";
+//		cout << p->val << " " << p->expon;
+//		p = p->next;
+//	}
+//	cout << endl;
+//}
+//
+//int main() {
+//	//读入链表
+//	LinkList LA, LB, LC;
+//	LA = ReadLink();
+//	LB = ReadLink();
+//	//乘法实现
+//	Print(LA);
+//	Print(LB);
+//	LC = Mulpy(LA, LB);
+//	Print(LC);
+//	return 0;
+//}
+
+
+
+
 
 //int main() {
 //    char op = 0;
